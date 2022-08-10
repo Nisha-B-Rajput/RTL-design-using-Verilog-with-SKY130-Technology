@@ -816,7 +816,7 @@ Here flop will not be inferred as the output is always high. <br />
 		end
 		endmodule
 		
-![2f8f6e43-102f-4fd7-aad2-585b0a55098d](https://user-images.githubusercontent.com/104454253/166292769-44c0406c-4fbb-4a3e-9345-2b308783a7de.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183830730-1cca4edb-1cf7-4667-ac59-679c7d0bdeaa.png)
 
 **Synthesis**
 
@@ -836,7 +836,7 @@ Here flop will not be inferred as the output is always high. <br />
 		end
 	endmodule
 
-![0e890967-cf43-4be0-8f53-968fe98c7f55](https://user-images.githubusercontent.com/104454253/166292799-97d7ee9c-1000-4dcc-935c-a5ae56a74f8e.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183830821-1404e8b0-9dd1-46e6-a93b-91fb38af00ed.png)
 
 **Synthesis**
 
