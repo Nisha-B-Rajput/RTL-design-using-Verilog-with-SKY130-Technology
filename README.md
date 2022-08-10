@@ -260,7 +260,8 @@ Below image is the delay order for the different flavour of gates.
 
 This is the schematic as per the connections in the above module.
 
-![94d6174a-bcb0-4cad-bef6-a0537ef32ef1](https://user-images.githubusercontent.com/104454253/166108402-f96b7fa9-3d8f-4f05-b4cb-89e443e43718.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183825566-ceb08669-cf2e-41ab-bd1f-559049fa0215.png)
+
 
 However, the yosys synthesizer generates the following schematic instead of the above one and with in the submodules, the connections are made
 
@@ -409,8 +410,8 @@ To curb this drawback, we are going for flops to store the data from the cominat
  
  **d-flipflop with asynchronous reset**- Here the output **q** goes low whenever reset is high and will not wait for the clock's posedge, i.e irrespective of clock, the output is changed to low.
  
- ![f143804e-5d1a-49d1-9b00-9227785d3e29](https://user-images.githubusercontent.com/104454253/166116145-8fbbacb1-e453-465a-9e41-f21de2337190.jpg)<br />
- 
+![image](https://user-images.githubusercontent.com/110079800/183825681-bbb087d7-76d8-4096-a3a3-411495e91314.png)
+
 	 module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
 		always @ (posedge clk , posedge async_reset)
 		begin
@@ -431,7 +432,6 @@ To curb this drawback, we are going for flops to store the data from the cominat
 
  **d-flipflop with asynchronous set**- Here the output **q** goes high whenever set is high and will not wait for the clock's posedge, i.e irrespective of clock, the output is changed to high.
  
-![ecc23aa6-e840-46bd-84e3-4eb2b6db0eee](https://user-images.githubusercontent.com/104454253/166116302-08fbdab3-58b3-4ab1-b793-5de48ac86146.jpg)
 
 	module dff_async_set ( input clk ,  input async_set , input d , output reg q );
 		always @ (posedge clk , posedge async_set)
@@ -446,6 +446,7 @@ To curb this drawback, we are going for flops to store the data from the cominat
 **Simulation**:
 
 ![dasynset](https://user-images.githubusercontent.com/104454253/166189676-5d8af125-e6a9-4ce2-9c17-42b4bac7f5bc.JPG)
+![image](https://user-images.githubusercontent.com/110079800/183825753-7d32d9f2-cee3-437c-b638-1c0ee699b6b6.png)
 
 **Synthesized circuit**:
 
@@ -475,7 +476,7 @@ To curb this drawback, we are going for flops to store the data from the cominat
 
 **d-flipflop with synchronous and asynchronbous reset**- Here the output **q** goes low whenever asynchronous reset is high where output doesn't depend on clock and also when synchronous reset is high and posedge of clock occurs.
 
-![3c78d01e-7f60-4e51-8150-c8b2dd414957](https://user-images.githubusercontent.com/104454253/166116820-d30a6781-ee51-4fc4-83bb-55e316f992d0.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183826037-aca3f06f-7601-4270-998b-92d14e123cf5.png)
 
 	module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
 		always @ (posedge clk , posedge async_reset)
@@ -506,15 +507,13 @@ This lab session deals with some automatic and interesting optimisations of the 
 		assign y = a * 2;
 	endmodule
 
-![8e686520-9e94-4c61-b8cf-6ac376a519c9](https://user-images.githubusercontent.com/104454253/166120664-44f5cd53-02bb-4457-bdb4-e8e02f0f64e4.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183826126-e93746ae-df6c-446d-baed-8346941a5db2.png)
+
 
 **Synthesized circuit**:
 
 ![mult2](https://user-images.githubusercontent.com/104454253/166121029-b478d2bc-145a-40ad-9307-c7006fe0320a.JPG)
 
-When it comes to multiplying with powers of 2, it just needs shifting as shown in the below image:
-
-![1781ff88-add9-4b73-b8ec-51257e3074f2](https://user-images.githubusercontent.com/104454253/166120876-1cbc110d-2760-4ab3-9199-7aae4ba2dffb.jpg)
 
 **Netlist for the above schematic**
 
@@ -522,7 +521,8 @@ When it comes to multiplying with powers of 2, it just needs shifting as shown i
 
 Special case of multiplying **a** with **9**. The result is shown in the below image:
 
-![24c130d3-f95b-4d89-a280-4089cf9839ef](https://user-images.githubusercontent.com/104454253/166121185-a63f798f-2eb2-4510-a589-722f75424bd1.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183826698-416061c8-21ec-4500-ba2e-52e830bd0794.png)
+
 
 The schematic for the same is shown below:
 
@@ -544,7 +544,7 @@ Optimising the combinational logic circuit is squeezing the logic to get the mos
 
 Here is an example for **Constant Propagation**
 
-![optimizations1](https://user-images.githubusercontent.com/104454253/166127772-9ff3dc8e-c5e2-4621-8070-d300df31667e.JPG)
+![image](https://user-images.githubusercontent.com/110079800/183827017-0c1dcf55-5e74-44f6-b462-59ae457ae494.png)
 
 In the above example, if we considor the trasnsistor level circuit of output Y, it has 6 MOS trasistors and when it comes to invertor, only 2 transistors will be sufficient. This is achieved by making A as contstant and propagating the same to output.
 
@@ -558,7 +558,8 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-1**
 
-![62695d29-f76d-426c-ab99-af6fbb2abda0](https://user-images.githubusercontent.com/104454253/166292324-f3243d68-55c1-4829-a836-8177edc79613.jpg)
+<img width="405" alt="image" src="https://user-images.githubusercontent.com/110079800/183827116-2d0fefd7-d528-4252-bae9-fd2fcac95467.png">
+
 
 	module opt_check (input a , input b , output y);
 		assign y = a?b:0;
@@ -570,7 +571,7 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-2**
 
-![e748028c-ea3d-4d58-8f5a-71a8248e4dd5](https://user-images.githubusercontent.com/104454253/166292286-6b3fd349-23af-463e-988e-863038a542d8.jpg)
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/110079800/183827209-0d0ece60-5506-4100-ac7a-225808e13b58.png">
 
 	module opt_check2 (input a , input b , output y);
 		assign y = a?1:b;
@@ -580,7 +581,8 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-3**
 
-![bfcc0b60-1b3e-4f45-a5cf-88b33f4e7dcf](https://user-images.githubusercontent.com/104454253/166292243-7fa03ef2-bce9-418f-8830-e9587d459aef.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183827379-b83fdf7c-15d5-4032-ae2a-4cbb81980725.png)
+
 
 	module opt_check3 (input a , input b, input c , output y);
 		assign y = a?(c?b:0):0;
@@ -590,7 +592,7 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-4**
 
-![a42e5eb3-2966-4fb0-bad3-6c6a6fa12798](https://user-images.githubusercontent.com/104454253/166292378-3ebdc824-de41-4385-9f7f-1654e71c0ff0.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183827550-0a34ce2d-78b5-4a20-b4c3-95c3818c4a2d.png)
 
 	module opt_check4 (input a , input b , input c , output y);
 		assign y = a?(b?(a & c ):c):(!c);
@@ -600,7 +602,7 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example- 5**
 
-![7c0faa7e-cffc-44f3-988a-17e2e4857675](https://user-images.githubusercontent.com/104454253/166292469-dea41b7c-40ed-4b5b-b9f7-30ad3de0bad2.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183827739-4169ab0e-255a-4bc6-a5d9-7f803614afcd.png)
 
 	module sub_module(input a , input b , output y);
 		assign y = a & b;
@@ -618,7 +620,8 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-6**
 
-![89cc6397-defe-4bba-a767-6e28c99ba0de](https://user-images.githubusercontent.com/104454253/166292486-d2041066-ab26-4010-b253-93c510c51674.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183828360-e81a09d9-5586-4ea1-b4e6-e1a88181de94.png)
+
 
 		module sub_module1(input a , input b , output y);
 		 assign y = a & b;
@@ -653,9 +656,7 @@ Below are the various techniques used for sequential logic optimisations:<br />
 
 **Sequential contant propagation**- Here only the first logic can be optimized as the output of flop is always zero. However for the second flop, the output changes continuously, therefor it cannot be used for contant propagation.
 
-![1e34f504-64e1-411d-a668-5294c6ea78f5](https://user-images.githubusercontent.com/104454253/166128292-7faf6384-792a-4455-a847-350bb95b631f.jpg)
-
-![6ef09bec-38c3-4a13-901b-0221461c9aca](https://user-images.githubusercontent.com/104454253/166128295-40ddcdda-9b4e-4a0f-a27e-5c5bd9a8bb3e.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183828529-4fb758c4-ce00-4fb0-81ed-3dc25a982fc4.png)
 
 #### 4.2.2. Advanced
 **State Optimisation**: This is optimisation of unused state. Using this technique we can come up with most optimised state machine.
@@ -677,7 +678,8 @@ Here flop will be inferred as the output is not constant. <br />
 		end
 	endmodule
 
-![bdf6fb4e-ee93-4f76-bbef-e25a8fe8aeda](https://user-images.githubusercontent.com/104454253/166292590-1d76f35e-f83f-486e-a154-1e0a7a1441fb.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183828704-aa51b3b3-143a-41c9-a895-646105a4505e.png)
+
 
 **Simulation**
 
@@ -703,7 +705,7 @@ Here flop will not be inferred as the output is always high. <br />
 		end
 	endmodule
 
-![7a01ae65-de9b-4e33-812e-206eb3c2733f](https://user-images.githubusercontent.com/104454253/166292615-3af99c64-305e-434a-b21b-907a30f83ab0.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183828882-704401c5-4fb0-4374-a861-62a0d3199f7e.png)
 
 **Simulation**
 
@@ -1010,7 +1012,7 @@ When an incomplete construct is used, if all the conditions are failed, the inpu
 
 This can be shown in below example:
 
-![0ed60c6c-b272-4bc6-939b-df13f76fc063](https://user-images.githubusercontent.com/104454253/166262011-21800dd6-0427-4558-a75e-6bf928117bba.jpg)
+![image](https://user-images.githubusercontent.com/110079800/183823663-fb182de9-bf78-4d28-a978-a6dd6771ba3b.png)
 
 ### 6.1.2 Case construct
 
@@ -1032,6 +1034,12 @@ This can be shown in below example:
  
 **Caveats in Case**<br />
 Caveats in case occur due to two reasons. One is **incomplete case statements** and the other is **partial assignments in case statements.**
+
+![image](https://user-images.githubusercontent.com/110079800/183824000-274edd9e-ffe9-48bf-991b-7ec38f0ea2ec.png)
+
+
+![image](https://user-images.githubusercontent.com/110079800/183824037-28c2ce23-833e-4d34-9d18-9e91420235e2.png)
+
 
 ## 6.2 Lab- Incomplete IF
 
@@ -1280,6 +1288,9 @@ The code in above example is big and also there is a chance of human error wile 
 ![synthdemux_generate](https://user-images.githubusercontent.com/104454253/166215477-0cb58974-29e0-42ae-adf9-c96e1addefb5.JPG)
 
 **Example-4- Ripple carry adder using fulladder**
+
+![image](https://user-images.githubusercontent.com/110079800/183824260-c4205340-9e38-4966-869c-ce674afa77d0.png)
+
 
 In this Ripple carry adder example, unlike instantiating fulladder for 8 times, generate for loop is used to instantiate the fulladder for 7 times and only for first full adder, it is instantiated seperately. Using the same code, just by changing bus sizes and condition of for loop, we can design any required size of ripple carry adder.
 
