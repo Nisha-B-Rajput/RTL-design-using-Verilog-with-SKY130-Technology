@@ -558,7 +558,7 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-1**
 
-<img width="405" alt="image" src="https://user-images.githubusercontent.com/110079800/183827116-2d0fefd7-d528-4252-bae9-fd2fcac95467.png">
+![image](https://user-images.githubusercontent.com/110079800/183832149-70a74867-15c4-45f7-9756-c68173eee7c6.png)
 
 
 	module opt_check (input a , input b , output y);
@@ -571,7 +571,8 @@ Command to optimize the circuit by yosys is **yosys> opt_clean -purge**
 
 **Example-2**
 
-<img width="413" alt="image" src="https://user-images.githubusercontent.com/110079800/183827209-0d0ece60-5506-4100-ac7a-225808e13b58.png">
+![image](https://user-images.githubusercontent.com/110079800/183832292-f6f0b44f-0e66-4f7f-9233-540316de3e6d.png)
+
 
 	module opt_check2 (input a , input b , output y);
 		assign y = a?1:b;
